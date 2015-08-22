@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+	<display-name>happiness</display-name>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<!--contextConfigLocation在 ContextLoaderListener类中的默认值是 /WEB-INF/applicationContext.xml -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:/applicationContext.xml</param-value>
+	</context-param>
+	
+	<filter>
+		<!-- 配置Struts 2核心Filter的名字 -->
+		<filter-name>struts2Filter</filter-name>
+		<!-- 配置Struts 2核心Filter的实现类 -->
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+		</filter-class>
+	</filter>
+	<!-- 配置Filter拦截的URL -->
+	<filter-mapping>
+		<!-- 配置Struts 2的核心FilterDispatcher拦截所有用户请求 -->
+		<filter-name>struts2Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
